@@ -27,3 +27,30 @@ To initialize the DHT11 sensor, use the `init_dht11` function:
 ```c
 dht11_t myDHT11;
 init_dht11(&myDHT11, &htim2, GPIOA, GPIO_PIN_2);
+```
+
+## Reading Data
+To read temperature and humidity data, call the readDHT11 function:
+
+```c
+if (readDHT11(&myDHT11)) {
+    uint8_t temperature = myDHT11.temperature;
+    uint8_t humidity = myDHT11.humidity;
+    // Process the temperature and humidity values
+} else {
+    // Handle read error
+}
+```
+## GPIO Modes
+Set the GPIO mode for the DHT11 pin using set_dht11_gpio_mode:
+
+```c 
+set_dht11_gpio_mode(&myDHT11, OUTPUT); // Set pin as OUTPUT
+set_dht11_gpio_mode(&myDHT11, INPUT);  // Set pin as INPUT
+```
+## Dependencies
+STM32 HAL library
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
